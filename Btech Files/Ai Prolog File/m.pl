@@ -1,0 +1,18 @@
+solution(Queens):- 
+            permutation([1,2,3,4,5,6,7,8],Queens), 
+           safe(Queens). 
+    permutation([],[]). 
+    permutation([H|T],PL):-
+            permutation(T,PT), 
+           del(H,PT,PI). 
+   del(I,L,L1). 
+.safe([]). 
+safe([Queen|Others]):- 
+safe(Others), 
+noattack(Queen,Others,1). 
+noattack(_,[],_). 
+noattack(Y,[Y1|Ylist],Xdist):- 
+Y1-Y<>Xdist, 
+Y-Y1<>Xdist, 
+Dist1=Xdist+1, 
+Noattack(Y,Ylist,Dist1).
